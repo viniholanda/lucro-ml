@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+  --color-bg-primary: #0F1117;
+  --color-bg-secondary: #1A1D27;
+  --color-bg-tertiary: #242733;
+  --color-border: #2E3244;
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-green-primary: #00A650;
+  --color-green-light: #00C853;
+  --color-green-bg: oklch(0.55 0.15 155 / 0.1);
+  --color-red-primary: #EF4444;
+  --color-red-bg: oklch(0.55 0.2 25 / 0.1);
+  --color-yellow-primary: #F59E0B;
+  --color-yellow-bg: oklch(0.7 0.15 80 / 0.1);
+  --color-blue-primary: #3B82F6;
+  --color-purple-primary: #6366F1;
+  --color-pink-primary: #EC4899;
+  --spacing-sidebar: 260px;
+  --spacing-sidebar-collapsed: 72px;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+.light body,
+body.light {
+  --color-bg-primary: #F8FAFC;
+  --color-bg-secondary: #FFFFFF;
+  --color-bg-tertiary: #F1F5F9;
+  --color-border: #E2E8F0;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+}
+
+:root {
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 72px;
+  --topbar-height: 64px;
+  --bottom-nav-height: 64px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-bg-tertiary) 25%, var(--color-border) 50%, var(--color-bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@media (min-width: 1024px) {
+  .layout-padding-open {
+    padding-left: 260px !important;
+  }
+
+  .layout-padding-closed {
+    padding-left: 72px !important;
+  }
+}
+
+/* Ensure cards always have internal breathing room */
+.p-5 {
+  padding: 20px !important;
+}
+
+.p-6 {
+  padding: 24px !important;
+}
+
+.p-4 {
+  padding: 16px !important;
+}
+
+/* Metric cards */
+.p-4.lg\:p-5,
+.p-4.lg\:p-6 {
+  padding: 20px !important;
+}
+
+/* Dashboard metric cards bigger padding on desktop */
+@media (min-width: 1024px) {
+  .lg\:p-5 {
+    padding: 20px !important;
+  }
+
+  .lg\:p-6 {
+    padding: 24px !important;
+  }
+}
+
+/* Tables inside rounded cards: add breathing room to edges */
+.rounded-2xl table th,
+.rounded-2xl table td {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+
+/* First column gets extra left padding */
+.rounded-2xl table th:first-child,
+.rounded-2xl table td:first-child {
+  padding-left: 28px !important;
+}
+
+/* Last column gets extra right padding */
+.rounded-2xl table th:last-child,
+.rounded-2xl table td:last-child {
+  padding-right: 28px !important;
+}
+
+/* Table footer row */
+.rounded-2xl .px-4.py-3 {
+  padding-left: 28px !important;
+  padding-right: 28px !important;
+}
+
+/* Pulse for negative margin */
+@keyframes pulse-red {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0);
+  }
+}
+
+.pulse-danger {
+  animation: pulse-red 2s ease-in-out infinite;
+}
